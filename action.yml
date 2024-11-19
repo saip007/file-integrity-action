@@ -12,5 +12,5 @@ runs:
   using: "composite"
   steps:
     - name: Run Python Script
-      run: python3 shasum_action.py  # Replace `main.py` with your script's name
+      run: python3 ${{ github.action_path }}/shasum_action.py  # Replace `main.py` with your script's name
       shell: bash
