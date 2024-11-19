@@ -12,5 +12,5 @@ runs:
   using: "composite"
   steps:
     - name: Run Python Script
-      run: python3 ${{ github.action_path }}/main.py
+      run: python3 ${{ github.action_path }}/shasum_action.py
       shell: bash
