@@ -1,15 +1,13 @@
-name: "File Integrity Checker"
-description: "Verifies file integrity using SHA256 checksum."
-inputs:
-  file-path:
-    description: "Path of the file to verify."
-    required: true
-  checksum:
-    description: "Expected SHA256 checksum."
-    required: true
+name: "SHA256 Checksum Generator"
+description: "Generates SHA256 checksums of the most recently modified files."
+inputs: {}
 runs:
-  using: "node16"
-  main: "index.js"
+  using: "python3"
+  main: "shasum_action.py"
+outputs:
+  checksums:
+    description: "SHA256 checksums of the recent modified files."
+    value: ${{ steps.sha-check.outputs.checksums }}
 branding:
   color: "blue"
-  icon: "shield"
+  icon: "check-circle"
