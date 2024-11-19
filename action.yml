@@ -1,0 +1,13 @@
+name: "SHA256 Checksum Generator"
+description: "Generates SHA256 checksums of the most recently modified files."
+inputs: {}
+runs:
+  using: "python3"
+  main: "shasum_action.py"
+outputs:
+  checksums:
+    description: "SHA256 checksums of the recent modified files."
+    value: ${{ steps.sha-check.outputs.checksums }}
+branding:
+  color: "blue"
+  icon: "check-circle"
