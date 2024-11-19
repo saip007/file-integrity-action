@@ -1,13 +1,16 @@
-name: "SHA256 Checksum Generator"
-description: "Generates SHA256 checksums of the most recently modified files."
-inputs: {}
-runs:
-  using: "python3"
-  main: "shasum_action.py"
+name: "File Integrity Checker"
+description: "Checks the integrity of modified files using SHA256."
+inputs:
+  path:
+    description: "Path to the files to check."
+    required: true
+    default: "."
 outputs:
   checksums:
-    description: "SHA256 checksums of the recent modified files."
-    value: ${{ steps.sha-check.outputs.checksums }}
-branding:
-  color: "blue"
-  icon: "check-circle"
+    description: "The SHA256 checksum of the modified files."
+runs:
+  using: "composite"
+  steps:
+    - name: Run Python Script
+      run: python3 shasum_action.py  # Replace `main.py` with your script's name
+      shell: bash
